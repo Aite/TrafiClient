@@ -4,17 +4,21 @@ PODS:
   - GoogleMaps/Base (2.7.0)
   - GoogleMaps/Maps (2.7.0):
     - GoogleMaps/Base
+  - SnapKit (4.0.0)
 
 DEPENDENCIES:
   - GoogleMaps
+  - SnapKit (~> 4.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - GoogleMaps
+    - SnapKit
 
 SPEC CHECKSUMS:
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: 9c84fc6b2204a9b63eb86d47c534d731b1bad6b7
+PODFILE CHECKSUM: a8f99f30e0bf1ddd8c37a5430f60aede3365c014
 
 COCOAPODS: 1.5.2
