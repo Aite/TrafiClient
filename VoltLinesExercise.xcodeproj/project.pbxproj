@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21BEFF198537FE9E1BBAE72E /* Pods_VoltLinesExercise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C6146F422826929D3AA772 /* Pods_VoltLinesExercise.framework */; };
+		9543E7C28EFBA3E3602FB590 /* Pods_VoltLinesExerciseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1631B5FF507C9043397ABD7 /* Pods_VoltLinesExerciseUITests.framework */; };
 		AF9F37C120B8630A005A07FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9F37C020B8630A005A07FB /* AppDelegate.swift */; };
 		AF9F37C320B8630A005A07FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9F37C220B8630A005A07FB /* ViewController.swift */; };
 		AF9F37C620B8630A005A07FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF9F37C420B8630A005A07FB /* Main.storyboard */; };
@@ -14,6 +16,7 @@
 		AF9F37CB20B8630C005A07FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF9F37C920B8630C005A07FB /* LaunchScreen.storyboard */; };
 		AF9F37D620B8630C005A07FB /* VoltLinesExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9F37D520B8630C005A07FB /* VoltLinesExerciseTests.swift */; };
 		AF9F37E120B8630C005A07FB /* VoltLinesExerciseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9F37E020B8630C005A07FB /* VoltLinesExerciseUITests.swift */; };
+		F98821916435D58E4790E5F5 /* Pods_VoltLinesExerciseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0733A6EE385ED851F1E43A26 /* Pods_VoltLinesExerciseTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0733A6EE385ED851F1E43A26 /* Pods_VoltLinesExerciseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VoltLinesExerciseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		40C53D6E38F54F4A23FBB422 /* Pods-VoltLinesExerciseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoltLinesExerciseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VoltLinesExerciseTests/Pods-VoltLinesExerciseTests.debug.xcconfig"; sourceTree = "<group>"; };
+		43C6146F422826929D3AA772 /* Pods_VoltLinesExercise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VoltLinesExercise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59D21CD0D304AD9A639DE63F /* Pods-VoltLinesExercise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoltLinesExercise.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VoltLinesExercise/Pods-VoltLinesExercise.debug.xcconfig"; sourceTree = "<group>"; };
+		78218C606456EF07168D49CB /* Pods-VoltLinesExerciseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoltLinesExerciseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VoltLinesExerciseTests/Pods-VoltLinesExerciseTests.release.xcconfig"; sourceTree = "<group>"; };
+		81409B7BE529A18885AD5A18 /* Pods-VoltLinesExerciseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoltLinesExerciseUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VoltLinesExerciseUITests/Pods-VoltLinesExerciseUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AF9F37BD20B8630A005A07FB /* VoltLinesExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoltLinesExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF9F37C020B8630A005A07FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF9F37C220B8630A005A07FB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +56,9 @@
 		AF9F37DC20B8630C005A07FB /* VoltLinesExerciseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoltLinesExerciseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF9F37E020B8630C005A07FB /* VoltLinesExerciseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoltLinesExerciseUITests.swift; sourceTree = "<group>"; };
 		AF9F37E220B8630C005A07FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFAEC90F85BF7E13DEC4B5EA /* Pods-VoltLinesExerciseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoltLinesExerciseUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VoltLinesExerciseUITests/Pods-VoltLinesExerciseUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D1631B5FF507C9043397ABD7 /* Pods_VoltLinesExerciseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VoltLinesExerciseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F26F8FA189673A115E61069B /* Pods-VoltLinesExercise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoltLinesExercise.release.xcconfig"; path = "Pods/Target Support Files/Pods-VoltLinesExercise/Pods-VoltLinesExercise.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21BEFF198537FE9E1BBAE72E /* Pods_VoltLinesExercise.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F98821916435D58E4790E5F5 /* Pods_VoltLinesExerciseTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +82,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9543E7C28EFBA3E3602FB590 /* Pods_VoltLinesExerciseUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		348F679D8A1FE0E18DA14F9E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				59D21CD0D304AD9A639DE63F /* Pods-VoltLinesExercise.debug.xcconfig */,
+				F26F8FA189673A115E61069B /* Pods-VoltLinesExercise.release.xcconfig */,
+				40C53D6E38F54F4A23FBB422 /* Pods-VoltLinesExerciseTests.debug.xcconfig */,
+				78218C606456EF07168D49CB /* Pods-VoltLinesExerciseTests.release.xcconfig */,
+				AFAEC90F85BF7E13DEC4B5EA /* Pods-VoltLinesExerciseUITests.debug.xcconfig */,
+				81409B7BE529A18885AD5A18 /* Pods-VoltLinesExerciseUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		43243B2D49FFE80E76ABEDBB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				43C6146F422826929D3AA772 /* Pods_VoltLinesExercise.framework */,
+				0733A6EE385ED851F1E43A26 /* Pods_VoltLinesExerciseTests.framework */,
+				D1631B5FF507C9043397ABD7 /* Pods_VoltLinesExerciseUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AF9F37B420B8630A005A07FB = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +119,8 @@
 				AF9F37D420B8630C005A07FB /* VoltLinesExerciseTests */,
 				AF9F37DF20B8630C005A07FB /* VoltLinesExerciseUITests */,
 				AF9F37BE20B8630A005A07FB /* Products */,
+				348F679D8A1FE0E18DA14F9E /* Pods */,
+				43243B2D49FFE80E76ABEDBB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,6 +172,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF9F37E520B8630C005A07FB /* Build configuration list for PBXNativeTarget "VoltLinesExercise" */;
 			buildPhases = (
+				006CE89B845FDC87E70F59A9 /* [CP] Check Pods Manifest.lock */,
 				AF9F37B920B8630A005A07FB /* Sources */,
 				AF9F37BA20B8630A005A07FB /* Frameworks */,
 				AF9F37BB20B8630A005A07FB /* Resources */,
@@ -149,6 +190,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF9F37E820B8630C005A07FB /* Build configuration list for PBXNativeTarget "VoltLinesExerciseTests" */;
 			buildPhases = (
+				A85F4C9BEB91146DA11326A5 /* [CP] Check Pods Manifest.lock */,
 				AF9F37CD20B8630C005A07FB /* Sources */,
 				AF9F37CE20B8630C005A07FB /* Frameworks */,
 				AF9F37CF20B8630C005A07FB /* Resources */,
@@ -167,6 +209,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF9F37EB20B8630C005A07FB /* Build configuration list for PBXNativeTarget "VoltLinesExerciseUITests" */;
 			buildPhases = (
+				D7EC76CD2A6CDBDF094236AF /* [CP] Check Pods Manifest.lock */,
 				AF9F37D820B8630C005A07FB /* Sources */,
 				AF9F37D920B8630C005A07FB /* Frameworks */,
 				AF9F37DA20B8630C005A07FB /* Resources */,
@@ -250,6 +293,63 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		006CE89B845FDC87E70F59A9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VoltLinesExercise-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A85F4C9BEB91146DA11326A5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VoltLinesExerciseTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D7EC76CD2A6CDBDF094236AF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VoltLinesExerciseUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AF9F37B920B8630A005A07FB /* Sources */ = {
@@ -428,6 +528,7 @@
 		};
 		AF9F37E620B8630C005A07FB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59D21CD0D304AD9A639DE63F /* Pods-VoltLinesExercise.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -446,6 +547,7 @@
 		};
 		AF9F37E720B8630C005A07FB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F26F8FA189673A115E61069B /* Pods-VoltLinesExercise.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -464,6 +566,7 @@
 		};
 		AF9F37E920B8630C005A07FB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40C53D6E38F54F4A23FBB422 /* Pods-VoltLinesExerciseTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -485,6 +588,7 @@
 		};
 		AF9F37EA20B8630C005A07FB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78218C606456EF07168D49CB /* Pods-VoltLinesExerciseTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -506,6 +610,7 @@
 		};
 		AF9F37EC20B8630C005A07FB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AFAEC90F85BF7E13DEC4B5EA /* Pods-VoltLinesExerciseUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -526,6 +631,7 @@
 		};
 		AF9F37ED20B8630C005A07FB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81409B7BE529A18885AD5A18 /* Pods-VoltLinesExerciseUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
