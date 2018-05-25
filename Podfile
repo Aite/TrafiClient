@@ -6,6 +6,8 @@ target 'VoltLinesExercise' do
   use_frameworks!
 
   # Pods for VoltLinesExercise
+  source 'https://github.com/CocoaPods/Specs.git'
+  pod 'GoogleMaps'
 
   target 'VoltLinesExerciseTests' do
     inherit! :search_paths

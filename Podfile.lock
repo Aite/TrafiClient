@@ -1,3 +1,20 @@
-PODFILE CHECKSUM: b95332fb2f3e17befff8a8e72c0299cc53fd86f3
+PODS:
+  - GoogleMaps (2.7.0):
+    - GoogleMaps/Maps (= 2.7.0)
+  - GoogleMaps/Base (2.7.0)
+  - GoogleMaps/Maps (2.7.0):
+    - GoogleMaps/Base
+
+DEPENDENCIES:
+  - GoogleMaps
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - GoogleMaps
+
+SPEC CHECKSUMS:
+  GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
+
+PODFILE CHECKSUM: 9c84fc6b2204a9b63eb86d47c534d731b1bad6b7
 
 COCOAPODS: 1.5.2
