@@ -26,7 +26,6 @@ class ViewController: UIViewController {
         let long = -43.225440
 
         loadGoogleMap(withLatitude: lat, longitude: long)
-
         loadStops(atLatitude: lat, longitude: long)
     }
 

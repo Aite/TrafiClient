@@ -145,13 +145,12 @@
 		AF9F37BF20B8630A005A07FB /* VoltLinesExercise */ = {
 			isa = PBXGroup;
 			children = (
-				AFB9C22F20BAFB9F0084083D /* Model */,
 				AF9F37F320B8C211005A07FB /* Utilities */,
+				AFB9C22F20BAFB9F0084083D /* Model */,
+				AFB9C23520BB19BF0084083D /* Controller */,
+				AFB9C23420BB19B20084083D /* View */,
 				AF9F37C020B8630A005A07FB /* AppDelegate.swift */,
-				AF9F37C220B8630A005A07FB /* ViewController.swift */,
-				AF9F37C420B8630A005A07FB /* Main.storyboard */,
 				AF9F37C720B8630C005A07FB /* Assets.xcassets */,
-				AF9F37C920B8630C005A07FB /* LaunchScreen.storyboard */,
 				AF9F37CC20B8630C005A07FB /* Info.plist */,
 			);
 			path = VoltLinesExercise;
@@ -191,6 +190,23 @@
 				AFB9C23120BAFB9F0084083D /* Stop.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		AFB9C23420BB19B20084083D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AF9F37C420B8630A005A07FB /* Main.storyboard */,
+				AF9F37C920B8630C005A07FB /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AFB9C23520BB19BF0084083D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AF9F37C220B8630A005A07FB /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
