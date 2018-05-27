@@ -17,6 +17,9 @@
 		AF9F37D620B8630C005A07FB /* VoltLinesExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9F37D520B8630C005A07FB /* VoltLinesExerciseTests.swift */; };
 		AF9F37E120B8630C005A07FB /* VoltLinesExerciseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9F37E020B8630C005A07FB /* VoltLinesExerciseUITests.swift */; };
 		AF9F37F520B8C26B005A07FB /* TrafiAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9F37F420B8C26B005A07FB /* TrafiAPI.swift */; };
+		AFB9C22E20BAFB850084083D /* TrafiAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9C22D20BAFB840084083D /* TrafiAPIManager.swift */; };
+		AFB9C23220BAFBA00084083D /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9C23020BAFB9F0084083D /* Coordinate.swift */; };
+		AFB9C23320BAFBA00084083D /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9C23120BAFB9F0084083D /* Stop.swift */; };
 		F98821916435D58E4790E5F5 /* Pods_VoltLinesExerciseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0733A6EE385ED851F1E43A26 /* Pods_VoltLinesExerciseTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +62,9 @@
 		AF9F37E220B8630C005A07FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF9F37F420B8C26B005A07FB /* TrafiAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafiAPI.swift; sourceTree = "<group>"; };
 		AFAEC90F85BF7E13DEC4B5EA /* Pods-VoltLinesExerciseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoltLinesExerciseUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VoltLinesExerciseUITests/Pods-VoltLinesExerciseUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AFB9C22D20BAFB840084083D /* TrafiAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafiAPIManager.swift; sourceTree = "<group>"; };
+		AFB9C23020BAFB9F0084083D /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		AFB9C23120BAFB9F0084083D /* Stop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
 		D1631B5FF507C9043397ABD7 /* Pods_VoltLinesExerciseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VoltLinesExerciseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F26F8FA189673A115E61069B /* Pods-VoltLinesExercise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoltLinesExercise.release.xcconfig"; path = "Pods/Target Support Files/Pods-VoltLinesExercise/Pods-VoltLinesExercise.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +145,7 @@
 		AF9F37BF20B8630A005A07FB /* VoltLinesExercise */ = {
 			isa = PBXGroup;
 			children = (
+				AFB9C22F20BAFB9F0084083D /* Model */,
 				AF9F37F320B8C211005A07FB /* Utilities */,
 				AF9F37C020B8630A005A07FB /* AppDelegate.swift */,
 				AF9F37C220B8630A005A07FB /* ViewController.swift */,
@@ -171,9 +178,19 @@
 		AF9F37F320B8C211005A07FB /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				AFB9C22D20BAFB840084083D /* TrafiAPIManager.swift */,
 				AF9F37F420B8C26B005A07FB /* TrafiAPI.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		AFB9C22F20BAFB9F0084083D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AFB9C23020BAFB9F0084083D /* Coordinate.swift */,
+				AFB9C23120BAFB9F0084083D /* Stop.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,6 +431,9 @@
 				AF9F37C320B8630A005A07FB /* ViewController.swift in Sources */,
 				AF9F37C120B8630A005A07FB /* AppDelegate.swift in Sources */,
 				AF9F37F520B8C26B005A07FB /* TrafiAPI.swift in Sources */,
+				AFB9C22E20BAFB850084083D /* TrafiAPIManager.swift in Sources */,
+				AFB9C23220BAFBA00084083D /* Coordinate.swift in Sources */,
+				AFB9C23320BAFBA00084083D /* Stop.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
