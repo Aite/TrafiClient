@@ -12,7 +12,13 @@ import SnapKit
 
 class ViewController: UIViewController {
 
-    var mapView : GMSMapView!
+    private var mapView : GMSMapView!
+    private var stopMarkersDictionary : [String : GMSMarker]?
+    var viewModel : MarkerListViewModel? {
+        didSet {
+            refreshMarkers()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,19 +80,41 @@ class ViewController: UIViewController {
                 return
             }
 
-            for stop in stops {
-                let marker = GMSMarker()
-                marker.position = CLLocationCoordinate2D(
-                    latitude: stop.coordinate.latitiude,
-                    longitude: stop.coordinate.longitiude
-                )
-                marker.title = stop.name
-                // Add the stop to the marker as user data to be used later if needed
-                marker.userData = stop
-                marker.map = self.mapView
-            }
+            self.viewModel = MarkerListViewModel(stops: stops)
         }
     }
 
+    private func refreshMarkers() -> Void {
+        var newMarkers = [String : GMSMarker]()
+
+        // create marker for each marker model view and set its properties (reuse existing marker if it has the same id)
+        if let markerViewModels = viewModel?.markerViewModels {
+            for markerViewModel in markerViewModels {
+                var marker = stopMarkersDictionary?.removeValue(forKey: markerViewModel.id)
+                if marker == nil {
+                    marker = GMSMarker()
+                    // Add the stop to the marker as user data to be used later if needed
+                    marker?.map = self.mapView
+                }
+
+                newMarkers[markerViewModel.id] = marker
+
+                marker?.position = markerViewModel.position
+                marker?.title = markerViewModel.title
+                marker?.userData = markerViewModel.stop
+            }
+        }
+
+        // Remove old markers from the map
+        if let markers = stopMarkersDictionary?.values {
+            for marker in markers {
+                marker.map = nil
+                marker.userData = nil
+            }
+        }
+
+        // set markers dictionary
+        self.stopMarkersDictionary = newMarkers
+    }
 }
 

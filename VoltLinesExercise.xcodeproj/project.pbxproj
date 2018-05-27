@@ -20,6 +20,8 @@
 		AFB9C22E20BAFB850084083D /* TrafiAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9C22D20BAFB840084083D /* TrafiAPIManager.swift */; };
 		AFB9C23220BAFBA00084083D /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9C23020BAFB9F0084083D /* Coordinate.swift */; };
 		AFB9C23320BAFBA00084083D /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9C23120BAFB9F0084083D /* Stop.swift */; };
+		AFB9C23E20BB5FB00084083D /* MarkerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9C23C20BB5FB00084083D /* MarkerViewModel.swift */; };
+		AFB9C23F20BB5FB00084083D /* MarkerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9C23D20BB5FB00084083D /* MarkerListViewModel.swift */; };
 		F98821916435D58E4790E5F5 /* Pods_VoltLinesExerciseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0733A6EE385ED851F1E43A26 /* Pods_VoltLinesExerciseTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +67,8 @@
 		AFB9C22D20BAFB840084083D /* TrafiAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafiAPIManager.swift; sourceTree = "<group>"; };
 		AFB9C23020BAFB9F0084083D /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		AFB9C23120BAFB9F0084083D /* Stop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
+		AFB9C23C20BB5FB00084083D /* MarkerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerViewModel.swift; sourceTree = "<group>"; };
+		AFB9C23D20BB5FB00084083D /* MarkerListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerListViewModel.swift; sourceTree = "<group>"; };
 		D1631B5FF507C9043397ABD7 /* Pods_VoltLinesExerciseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VoltLinesExerciseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F26F8FA189673A115E61069B /* Pods-VoltLinesExercise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoltLinesExercise.release.xcconfig"; path = "Pods/Target Support Files/Pods-VoltLinesExercise/Pods-VoltLinesExercise.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,6 +151,7 @@
 			children = (
 				AF9F37F320B8C211005A07FB /* Utilities */,
 				AFB9C22F20BAFB9F0084083D /* Model */,
+				AFB9C23B20BB5FB00084083D /* ViewModel */,
 				AFB9C23520BB19BF0084083D /* Controller */,
 				AFB9C23420BB19B20084083D /* View */,
 				AF9F37C020B8630A005A07FB /* AppDelegate.swift */,
@@ -207,6 +212,15 @@
 				AF9F37C220B8630A005A07FB /* ViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		AFB9C23B20BB5FB00084083D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AFB9C23C20BB5FB00084083D /* MarkerViewModel.swift */,
+				AFB9C23D20BB5FB00084083D /* MarkerListViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -446,9 +460,11 @@
 			files = (
 				AF9F37C320B8630A005A07FB /* ViewController.swift in Sources */,
 				AF9F37C120B8630A005A07FB /* AppDelegate.swift in Sources */,
+				AFB9C23E20BB5FB00084083D /* MarkerViewModel.swift in Sources */,
 				AF9F37F520B8C26B005A07FB /* TrafiAPI.swift in Sources */,
 				AFB9C22E20BAFB850084083D /* TrafiAPIManager.swift in Sources */,
 				AFB9C23220BAFBA00084083D /* Coordinate.swift in Sources */,
+				AFB9C23F20BB5FB00084083D /* MarkerListViewModel.swift in Sources */,
 				AFB9C23320BAFBA00084083D /* Stop.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
