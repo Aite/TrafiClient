@@ -10,9 +10,9 @@ import UIKit
 import Moya
 
 class TrafiAPIManager: NSObject {
-    /* olds the singleton instance.
+    /* Holds the singleton instance.
      */
-    fileprivate static var instance = TrafiAPIManager()
+    private static var instance = TrafiAPIManager()
 
     /* Returns the default singleton instance.
      */
@@ -24,7 +24,7 @@ class TrafiAPIManager: NSObject {
 
     /* Holds Moya provider instance for TrafiAPI.
      */
-    fileprivate let provider = MoyaProvider<TrafiAPI>()
+    private let provider = MoyaProvider<TrafiAPI>()
 
     /* Gets the stops info at the location using TrafiAPI, create Stop instances, and send them in the completion block to the caller in array.
      * If an error occurred it will be returned in the parameter `error` and the parameter `stops` will be nil

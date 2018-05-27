@@ -39,7 +39,7 @@ class ViewController: UIViewController {
 
     /* Loads google map viewing the passed location
      */
-    fileprivate func loadGoogleMap(withLatitude lat: Double, longitude long: Double) {
+    private func loadGoogleMap(withLatitude lat: Double, longitude long: Double) {
 
         let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 15.0)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
@@ -62,7 +62,7 @@ class ViewController: UIViewController {
     /* Loads the stops at the location using TrafiAPIManager, and create markers for them on the map.
      * It shows an alert to the user if an error occurred
      */
-    fileprivate func loadStops(atLatitude lat: Double, longitude long: Double) {
+    private func loadStops(atLatitude lat: Double, longitude long: Double) {
         TrafiAPIManager.default.retreiveStops(atLatitude: lat, longitude: long) { (stopsArray, error) in
             guard error == nil else {
                 // Show an alert to the user if an error occurred
