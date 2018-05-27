@@ -16,6 +16,7 @@
 		AF9F37CB20B8630C005A07FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF9F37C920B8630C005A07FB /* LaunchScreen.storyboard */; };
 		AF9F37D620B8630C005A07FB /* VoltLinesExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9F37D520B8630C005A07FB /* VoltLinesExerciseTests.swift */; };
 		AF9F37E120B8630C005A07FB /* VoltLinesExerciseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9F37E020B8630C005A07FB /* VoltLinesExerciseUITests.swift */; };
+		AF9F37F520B8C26B005A07FB /* TrafiAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9F37F420B8C26B005A07FB /* TrafiAPI.swift */; };
 		F98821916435D58E4790E5F5 /* Pods_VoltLinesExerciseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0733A6EE385ED851F1E43A26 /* Pods_VoltLinesExerciseTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		AF9F37DC20B8630C005A07FB /* VoltLinesExerciseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoltLinesExerciseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF9F37E020B8630C005A07FB /* VoltLinesExerciseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoltLinesExerciseUITests.swift; sourceTree = "<group>"; };
 		AF9F37E220B8630C005A07FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF9F37F420B8C26B005A07FB /* TrafiAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafiAPI.swift; sourceTree = "<group>"; };
 		AFAEC90F85BF7E13DEC4B5EA /* Pods-VoltLinesExerciseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoltLinesExerciseUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VoltLinesExerciseUITests/Pods-VoltLinesExerciseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D1631B5FF507C9043397ABD7 /* Pods_VoltLinesExerciseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VoltLinesExerciseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F26F8FA189673A115E61069B /* Pods-VoltLinesExercise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoltLinesExercise.release.xcconfig"; path = "Pods/Target Support Files/Pods-VoltLinesExercise/Pods-VoltLinesExercise.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 		AF9F37BF20B8630A005A07FB /* VoltLinesExercise */ = {
 			isa = PBXGroup;
 			children = (
+				AF9F37F320B8C211005A07FB /* Utilities */,
 				AF9F37C020B8630A005A07FB /* AppDelegate.swift */,
 				AF9F37C220B8630A005A07FB /* ViewController.swift */,
 				AF9F37C420B8630A005A07FB /* Main.storyboard */,
@@ -163,6 +166,14 @@
 				AF9F37E220B8630C005A07FB /* Info.plist */,
 			);
 			path = VoltLinesExerciseUITests;
+			sourceTree = "<group>";
+		};
+		AF9F37F320B8C211005A07FB /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AF9F37F420B8C26B005A07FB /* TrafiAPI.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,10 +351,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-VoltLinesExercise/Pods-VoltLinesExercise-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,6 +413,7 @@
 			files = (
 				AF9F37C320B8630A005A07FB /* ViewController.swift in Sources */,
 				AF9F37C120B8630A005A07FB /* AppDelegate.swift in Sources */,
+				AF9F37F520B8C26B005A07FB /* TrafiAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
