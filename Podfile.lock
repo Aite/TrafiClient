@@ -1,24 +1,38 @@
 PODS:
+  - Alamofire (4.7.2)
   - GoogleMaps (2.7.0):
     - GoogleMaps/Maps (= 2.7.0)
   - GoogleMaps/Base (2.7.0)
   - GoogleMaps/Maps (2.7.0):
     - GoogleMaps/Base
+  - Moya (11.0.2):
+    - Moya/Core (= 11.0.2)
+  - Moya/Core (11.0.2):
+    - Alamofire (~> 4.1)
+    - Result (~> 3.0)
+  - Result (3.2.4)
   - SnapKit (4.0.0)
 
 DEPENDENCIES:
   - GoogleMaps
+  - Moya (~> 11.0)
   - SnapKit (~> 4.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - GoogleMaps
+    - Moya
+    - Result
     - SnapKit
 
 SPEC CHECKSUMS:
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
+  Moya: a725035953bc1c0eb1be505ab903984501d82440
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: a8f99f30e0bf1ddd8c37a5430f60aede3365c014
+PODFILE CHECKSUM: 639103786174350989a4809ea3b840097774e3e2
 
 COCOAPODS: 1.5.2
