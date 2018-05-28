@@ -29,8 +29,8 @@ class TrafiAPIManager: NSObject {
     /* Gets the stops info at the location using TrafiAPI, create Stop instances, and send them in the completion block to the caller in array.
      * If an error occurred it will be returned in the parameter `error` and the parameter `stops` will be nil
      */
-    public func retreiveStops(atLatitude lat: Double, longitude long: Double, _ completion: @escaping (_ stops: [Stop]?, _ error: Error?) -> Void) {
-        provider.request(.nearbyStops(latitiude: lat, longitiude: long)) { result in
+    public func retreiveStops(atLatitude lat: Double, longitude long: Double, radius: Double, _ completion: @escaping (_ stops: [Stop]?, _ error: Error?) -> Void) {
+        provider.request(.nearbyStops(latitiude: lat, longitiude: long, radius: radius)) { result in
 
             switch result {
             case let .success(moyaResponse):

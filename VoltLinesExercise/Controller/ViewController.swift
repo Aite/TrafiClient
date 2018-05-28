@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         let long = -43.225440
 
         loadGoogleMap(withLatitude: lat, longitude: long)
-        loadStops(atLatitude: lat, longitude: long)
+        loadStops(atLatitude: lat, longitude: long, radius: 500)
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +48,7 @@ class ViewController: UIViewController {
 
         let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 15.0)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        mapView.delegate = self
 
         view.addSubview(mapView)
 
@@ -67,8 +68,8 @@ class ViewController: UIViewController {
     /* Loads the stops at the location using TrafiAPIManager, and create markers for them on the map.
      * It shows an alert to the user if an error occurred
      */
-    private func loadStops(atLatitude lat: Double, longitude long: Double) {
-        TrafiAPIManager.default.retreiveStops(atLatitude: lat, longitude: long) { (stopsArray, error) in
+    private func loadStops(atLatitude lat: Double, longitude long: Double, radius: Double) {
+        TrafiAPIManager.default.retreiveStops(atLatitude: lat, longitude: long, radius: radius) { (stopsArray, error) in
             guard error == nil else {
                 // Show an alert to the user if an error occurred
                 let alert = UIAlertController(title: "Error!", message: "Can't connect to the server, please try again later!", preferredStyle: .alert)
@@ -118,3 +119,13 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController : GMSMapViewDelegate {
+
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        let leftCoordinates = mapView.projection.visibleRegion().nearLeft;
+        let rightCoordinates = mapView.projection.visibleRegion().nearRight;
+        let distance = Utilities.default.getDistanceMetresBetweenLocationCoordinates(leftCoordinates, rightCoordinates);
+
+        loadStops(atLatitude: position.target.latitude, longitude: position.target.longitude, radius: distance * 0.6)
+    }
+}
