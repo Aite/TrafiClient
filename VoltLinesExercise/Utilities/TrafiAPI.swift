@@ -9,7 +9,7 @@
 import UIKit
 import Moya
 
-fileprivate let apiKey = "sandbox_key_not_for_production"
+fileprivate let apiKey = "431cd5217888ca4d0126cc6375bc408b"
 
 enum TrafiAPI {
     case nearbyStops(latitiude: Double, longitiude: Double, radius: Double)
