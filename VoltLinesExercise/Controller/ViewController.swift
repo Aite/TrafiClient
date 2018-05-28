@@ -14,10 +14,13 @@ class ViewController: UIViewController {
 
     private var locationManager = CLLocationManager()
     private var mapView : GMSMapView!
+    private var stopsCountLabel : UILabel!
+
     private var stopMarkersDictionary : [String : GMSMarker]?
     var viewModel : MarkerListViewModel? {
         didSet {
             refreshMarkers()
+            stopsCountLabel.text = viewModel?.stopsCountText
         }
     }
 
@@ -32,8 +35,24 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        stopsCountLabel = UILabel(frame: CGRect.zero)
+        stopsCountLabel.textColor = UIColor.orange
+        stopsCountLabel.textAlignment = .center
+        stopsCountLabel.font = UIFont(name: "Helvetica", size: 20)
+        self.view.addSubview(stopsCountLabel)
+        stopsCountLabel.snp.makeConstraints { (constraintMaker) in
+            if #available(iOS 11, *) {
+                constraintMaker.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin)
+            } else {
+                constraintMaker.top.equalToSuperview()
+            }
+            constraintMaker.height.equalTo(50)
+            constraintMaker.leading.equalToSuperview()
+            constraintMaker.trailing.equalToSuperview()
+        }
+
         loadGoogleMap(withLatitude: latitude, longitude: longitude)
-        loadStops(atLatitude: latitude, longitude: longitude, radius: 500)
+        loadStops(atLatitude: latitude, longitude: longitude, radius: 1650)
         self.locationManager.delegate = self
         self.locationManager.startUpdatingLocation()
     }
@@ -58,7 +77,7 @@ class ViewController: UIViewController {
 
         mapView.snp.makeConstraints { (constraintMaker) in
             if #available(iOS 11, *) {
-                constraintMaker.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin)
+                constraintMaker.top.equalTo(stopsCountLabel.snp.bottom)
                 constraintMaker.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin)
             } else {
                 constraintMaker.top.equalToSuperview()
