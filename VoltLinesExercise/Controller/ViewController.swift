@@ -96,6 +96,7 @@ class ViewController: UIViewController {
             guard error == nil else {
                 // Show an alert to the user if an error occurred
                 let alert = UIAlertController(title: "Error!", message: "Can't connect to the server, please try again later!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 return
             }
