@@ -12,6 +12,7 @@ import SnapKit
 
 class ViewController: UIViewController {
 
+    private var locationManager = CLLocationManager()
     private var mapView : GMSMapView!
     private var stopMarkersDictionary : [String : GMSMarker]?
     var viewModel : MarkerListViewModel? {
@@ -20,19 +21,21 @@ class ViewController: UIViewController {
         }
     }
 
+    // Rio De Janeiro location
+    private var latitude : Double = -22.891144
+    private var longitude : Double = -43.225440
+    private var radius : Double = 500
+//    // Levant location
+//    private var latitude : Double = 41.080037
+//    private var longitude : Double = 29.008330
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        // Levant location
-//        let lat = 41.080037
-//        let long = 29.008330
-//
-        // Rio De Janeiro location
-        let lat = -22.891144
-        let long = -43.225440
-
-        loadGoogleMap(withLatitude: lat, longitude: long)
-        loadStops(atLatitude: lat, longitude: long, radius: 500)
+        loadGoogleMap(withLatitude: latitude, longitude: longitude)
+        loadStops(atLatitude: latitude, longitude: longitude, radius: 500)
+        self.locationManager.delegate = self
+        self.locationManager.startUpdatingLocation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,6 +52,7 @@ class ViewController: UIViewController {
         let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 15.0)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.delegate = self
+        mapView.isMyLocationEnabled = true
 
         view.addSubview(mapView)
 
@@ -121,11 +125,36 @@ class ViewController: UIViewController {
 
 extension ViewController : GMSMapViewDelegate {
 
+    // we need this delegate method to know if the zoom was changed (and we keep the position for loading stops to be the same)
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
         let leftCoordinates = mapView.projection.visibleRegion().nearLeft;
         let rightCoordinates = mapView.projection.visibleRegion().nearRight;
         let distance = Utilities.default.getDistanceMetresBetweenLocationCoordinates(leftCoordinates, rightCoordinates);
 
-        loadStops(atLatitude: position.target.latitude, longitude: position.target.longitude, radius: distance * 0.6)
+        let radius = distance
+        if abs(self.radius - radius) > 50 {
+            self.radius = radius
+            loadStops(atLatitude: self.latitude, longitude: self.longitude, radius:self.radius)
+        }
+    }
+}
+
+extension ViewController : CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+
+        let location = locations.last
+        guard let latitude = location?.coordinate.latitude, let longitude = location?.coordinate.longitude else {
+            return
+        }
+
+        self.latitude = latitude
+        self.longitude = longitude
+        let currentZoom = mapView.camera.zoom
+        let cameraPosition = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: currentZoom)
+
+        self.mapView?.animate(to: cameraPosition)
+
+        // Stop updating location
+        self.locationManager.stopUpdatingLocation()
     }
 }
