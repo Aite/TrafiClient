@@ -26,12 +26,12 @@ class ViewController: UIViewController {
     }
 
     // Rio De Janeiro location
-    private var latitude : Double = -22.891144
-    private var longitude : Double = -43.225440
-    private var radius : Double = 500
+//    private var latitude : Double = -22.891144
+//    private var longitude : Double = -43.225440
+    private var radius : Double = 1650
 //    // Levant location
-//    private var latitude : Double = 41.080037
-//    private var longitude : Double = 29.008330
+    private var latitude : Double = 41.080037
+    private var longitude : Double = 29.008330
     private var currentRegionName = ""
 
     private var pullUpControllerAdded = false
