@@ -16,4 +16,15 @@ class Departure: NSObject {
         self.remainingMinutes = remainingMinutes
         self.destination = destination
     }
+
+    convenience init?(json: [String: Any]) {
+        guard let remainingMinutes = json["RemainingMinutes"] as? Int else {
+            return nil
+        }
+        guard let destination = json["Destination"] as? String else {
+            return nil
+        }
+
+        self.init(remainingMinutes: remainingMinutes, destination: destination)
+    }
 }

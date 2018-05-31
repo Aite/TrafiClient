@@ -40,6 +40,30 @@ class StopTooltip: NSObject {
         }
 
         self.init(name: name, directionText: directionText, distanceText: distanceText, schedules: schedules)
+    }
 
+    func updateSchedules(json: [[String: Any]]) {
+        var scheduleNames = [String]()
+        for rawSchedule in json {
+            if let scheduleName = rawSchedule["Name"] as? String {
+                guard !scheduleNames.contains(scheduleName) else {
+                    continue
+                }
+                scheduleNames.append(scheduleName)
+                if let schedule = self.schedule(withName: scheduleName) {
+                    schedule.update(json: rawSchedule)
+                }
+            }
+        }
+    }
+
+    func schedule(withName name: String) -> StopSchedule? {
+        for schedule in schedules {
+            if schedule.name == name {
+                return schedule
+            }
+        }
+        
+        return nil
     }
 }

@@ -29,10 +29,11 @@ class MarkerTooltipView: UIView {
 
     var viewModel : MarkerTooltipViewModel? {
         didSet {
-            nameLabel.text = viewModel?.name
-            directionLabel.text = viewModel?.directionText
-            if let schedulesAtStop = viewModel?.schedulesAtStop {
-                for schedule in schedulesAtStop {
+            if let viewModel = viewModel {
+                nameLabel.text = viewModel.name
+                directionLabel.text = viewModel.directionText
+
+                for schedule in viewModel.schedulesAtStop {
                     let stopScheduleView = StopScheduleView(parentFrame: self.frame)
                     stopScheduleView.viewModel = schedule
                     schedulesStackView.addArrangedSubview(stopScheduleView)
@@ -109,6 +110,23 @@ class MarkerTooltipView: UIView {
             constraintMaker.centerX.equalToSuperview()
             constraintMaker.width.equalTo(40)
             constraintMaker.height.equalTo(self.gripViewHeight)
+        }
+    }
+
+    func reloadViewModel() {
+        if let viewModel = viewModel {
+            nameLabel.text = viewModel.name
+            directionLabel.text = viewModel.directionText
+
+            for arrangedSubview in schedulesStackView.arrangedSubviews {
+                schedulesStackView.removeArrangedSubview(arrangedSubview)
+            }
+
+            for schedule in viewModel.schedulesAtStop {
+                let stopScheduleView = StopScheduleView(parentFrame: self.frame)
+                stopScheduleView.viewModel = schedule
+                schedulesStackView.addArrangedSubview(stopScheduleView)
+            }
         }
     }
 }

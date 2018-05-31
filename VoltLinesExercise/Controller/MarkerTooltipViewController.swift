@@ -68,4 +68,8 @@ class MarkerTooltipViewController: PullUpController {
             constraintMaker.bottom.equalToSuperview()
         }
     }
+
+    func reloadViewModel() {
+        markerTooltipView?.reloadViewModel()
+    }
 }

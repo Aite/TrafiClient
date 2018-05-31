@@ -10,20 +10,38 @@ import UIKit
 
 class StopScheduleViewModel: NSObject {
 
+    private var stopSchedule : StopSchedule?
+
     var name : String
     var destination : String
     var remainingMinutesText : String!
+    var remainingMinutes : Int? {
+        return self.stopSchedule?.remainingMinutes
+    }
 
     init(withStopSchedule stopSchedule: StopSchedule) {
+        self.stopSchedule  = stopSchedule
         self.name = stopSchedule.name
         self.destination = stopSchedule.destination ?? "destination..."
         super.init()
-        if stopSchedule.departures.count > 0 {
-            self.remainingMinutesText = remaininTimeText(for: stopSchedule.departures[0].remainingMinutes)
+        if let remainingMinutes = self.remainingMinutes {
+            self.remainingMinutesText = remaininTimeText(for: remainingMinutes)
         }
         else {
             self.remainingMinutesText = "remaining time..."
         }
+    }
+
+    func reload(withStopSchedule stopSchedule: StopSchedule) -> Bool {
+        self.name = stopSchedule.name
+        self.destination = stopSchedule.destination ?? ""
+        if stopSchedule.departures.count > 0 {
+            self.remainingMinutesText = remaininTimeText(for: stopSchedule.departures[0].remainingMinutes)
+        }
+        else {
+            return false
+        }
+        return true
     }
 
     private func remaininTimeText(for remainingMinutes: Int) -> String {

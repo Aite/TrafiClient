@@ -68,4 +68,38 @@ class TrafiAPIManager: NSObject {
             }
         }
     }
+
+    /* Gets the stop departures info using TrafiAPI, set them to the Stop instance, and send a success variable in the completion block to the caller.
+     * If an error occurred it will be returned in the parameter `error` and the parameter `success` will be false
+     */
+    public func retreiveStopDepartures(for stop: Stop, region: String, _ completion: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+        provider.request(.departures(stopId: stop.id, region: region)) { result in
+
+            switch result {
+            case let .success(moyaResponse):
+                do {
+                    _ = try moyaResponse.filterSuccessfulStatusCodes()
+                    let json = try moyaResponse.mapJSON()
+
+                    if let json = json as? [String: Any] {
+                        
+                        if let rawStopSchedules = json["Schedules"] as? [[String: Any]] {
+                            stop.tooltip.updateSchedules(json: rawStopSchedules)
+                        }
+                    }
+                    completion(true, nil)
+                }
+                catch let error {
+                    // show an error to your user
+                    print(error)
+                    completion(false, error)
+                }
+
+            case let .failure(error):
+                print(error)
+                completion(false, error)
+
+            }
+        }
+    }
 }

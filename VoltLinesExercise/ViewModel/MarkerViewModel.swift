@@ -52,4 +52,8 @@ class MarkerViewModel: NSObject {
         self.tooltipViewModel = MarkerTooltipViewModel(withStopTooltip: stop.tooltip)
     }
 
+    func reloadStopInfo() {
+        self.tooltipViewModel.reload(withStopTooltip: stop.tooltip)
+    }
+
 }

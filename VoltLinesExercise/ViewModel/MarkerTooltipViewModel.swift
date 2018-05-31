@@ -23,4 +23,32 @@ class MarkerTooltipViewModel: NSObject {
             self.schedulesAtStop.append(stopScheduleViewModel)
         }
     }
+
+    func reload(withStopTooltip tooltip: StopTooltip) {
+        self.name = tooltip.name
+        self.directionText = tooltip.directionText ?? ""
+        self.distanceText = tooltip.distanceText ?? ""
+        for stopSchedule in tooltip.schedules {
+            var stopScheduleFound = false
+            for stopScheduleViewModel in self.schedulesAtStop {
+                if stopScheduleViewModel.name == stopSchedule.name {
+                    if !stopScheduleViewModel.reload(withStopSchedule: stopSchedule) {
+                        if let indexToRemove = self.schedulesAtStop.index(of: stopScheduleViewModel) {
+                            self.schedulesAtStop.remove(at: indexToRemove)
+                        }
+                    }
+                    stopScheduleFound = true
+                    break
+                }
+            }
+
+            if !stopScheduleFound {
+                let stopScheduleViewModel = StopScheduleViewModel(withStopSchedule: stopSchedule)
+                self.schedulesAtStop.append(stopScheduleViewModel)
+            }
+        }
+        self.schedulesAtStop.sort { (stopScheduleViewModel1, stopScheduleViewModel2) -> Bool in
+            return (stopScheduleViewModel1.remainingMinutes ?? Int.max) < (stopScheduleViewModel2.remainingMinutes ?? Int.max)
+        }
+    }
 }

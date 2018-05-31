@@ -17,7 +17,9 @@ class StopScheduleView: UIView {
     var viewModel : StopScheduleViewModel? {
         didSet {
             nameLabel.text = viewModel?.name
+            destinationLabel.textColor = UIColor.black
             destinationLabel.text = viewModel?.destination
+            remainingMinutesLabel.textColor = UIColor.black
             remainingMinutesLabel.text = viewModel?.remainingMinutesText
         }
     }

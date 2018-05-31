@@ -32,6 +32,7 @@ class ViewController: UIViewController {
 //    // Levant location
 //    private var latitude : Double = 41.080037
 //    private var longitude : Double = 29.008330
+    private var currentRegionName = ""
 
     private var pullUpControllerAdded = false
     private var markerTooltipViewController : MarkerTooltipViewController?
@@ -113,6 +114,34 @@ class ViewController: UIViewController {
         }
     }
 
+    /* Loads stop schedules using TrafiAPIManager, and set them in the marker tooltip view.
+     */
+    private func loadStopSchedules(for marker: GMSMarker, viewController: MarkerTooltipViewController) {
+        guard let markerViewModel = marker.userData as? MarkerViewModel else {
+            return
+        }
+        let stop = markerViewModel.stop
+
+        var regionName = currentRegionName.lowercased()
+        let regionNameComponents = regionName.components(separatedBy: " ")
+        if regionNameComponents.count > 0 {
+            regionName = regionNameComponents[0]
+        }
+
+        TrafiAPIManager.default.retreiveStopDepartures(for: stop, region: regionName) { (success, error) in
+            guard success || error == nil else {
+                // Show an alert to the user if an error occurred
+                let alert = UIAlertController(title: "Error!", message: "Can't connect to the server, please try again later!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+
+            markerViewModel.reloadStopInfo()
+            viewController.reloadViewModel()
+        }
+    }
+
     private func refreshMarkers() -> Void {
         var newMarkers = [String : GMSMarker]()
 
@@ -177,6 +206,17 @@ extension ViewController : CLLocationManagerDelegate {
 
         self.mapView?.animate(to: cameraPosition)
 
+        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+            guard let placemarks = placemarks else {
+                return
+            }
+            guard placemarks.count > 0 else {
+                return
+            }
+
+            let currentLocPlacemark = placemarks[0]
+            self.currentRegionName = currentLocPlacemark.locality ?? ""
+        }
         // Stop updating location
         self.locationManager.stopUpdatingLocation()
     }
@@ -198,6 +238,7 @@ extension ViewController : CLLocationManagerDelegate {
         if let currentMarkerTooltipViewController = markerTooltipViewController {
             currentMarkerTooltipViewController.markerTooltipView = markerTooltipView
             self.addPullUpController(currentMarkerTooltipViewController)
+            loadStopSchedules(for: marker, viewController: currentMarkerTooltipViewController)
         }
 
         return true
