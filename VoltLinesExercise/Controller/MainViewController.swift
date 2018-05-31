@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  VoltLinesExercise
 //
 //  Created by Alaa Al-Zaibak on 25.05.2018.
@@ -10,13 +10,24 @@ import UIKit
 import GoogleMaps
 import SnapKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
 
     private var locationManager = CLLocationManager()
     private var geocoder = CLGeocoder()
-    private var mapView : GMSMapView!
     private var stopsCountLabel : UILabel!
+    private var mapView : GMSMapView!
+    private var markerTooltipViewController : MarkerTooltipViewController?
 
+    // Rio De Janeiro location
+//    private var latitude : Double = -22.891144
+//    private var longitude : Double = -43.225440
+//    // Levant location
+    private var latitude : Double = 41.080037
+    private var longitude : Double = 29.008330
+
+    private var radius : Double = 1650
+    private var currentRegionName = ""
+    private var pullUpControllerAdded = false
     private var stopMarkersDictionary : [String : GMSMarker]?
     var viewModel : MarkerListViewModel? {
         didSet {
@@ -25,21 +36,26 @@ class ViewController: UIViewController {
         }
     }
 
-    // Rio De Janeiro location
-//    private var latitude : Double = -22.891144
-//    private var longitude : Double = -43.225440
-    private var radius : Double = 1650
-//    // Levant location
-    private var latitude : Double = 41.080037
-    private var longitude : Double = 29.008330
-    private var currentRegionName = ""
-
-    private var pullUpControllerAdded = false
-    private var markerTooltipViewController : MarkerTooltipViewController?
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        initializeStopsCountLabel()
+        loadGoogleMap(withLatitude: latitude, longitude: longitude)
+        loadStops(atLatitude: latitude, longitude: longitude, radius: radius)
+
+        // Setup location manager
+        self.locationManager.delegate = self
+        self.locationManager.startUpdatingLocation()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    // MARK: - Private Methods
+
+    private func initializeStopsCountLabel() {
         stopsCountLabel = UILabel(frame: CGRect.zero)
         stopsCountLabel.textColor = UIColor.orange
         stopsCountLabel.textAlignment = .center
@@ -55,19 +71,7 @@ class ViewController: UIViewController {
             constraintMaker.leading.equalToSuperview()
             constraintMaker.trailing.equalToSuperview()
         }
-
-        loadGoogleMap(withLatitude: latitude, longitude: longitude)
-        loadStops(atLatitude: latitude, longitude: longitude, radius: 1650)
-        self.locationManager.delegate = self
-        self.locationManager.startUpdatingLocation()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Private Methods
 
     /* Loads google map viewing the passed location
      */
@@ -114,34 +118,6 @@ class ViewController: UIViewController {
         }
     }
 
-    /* Loads stop schedules using TrafiAPIManager, and set them in the marker tooltip view.
-     */
-    private func loadStopSchedules(for marker: GMSMarker, viewController: MarkerTooltipViewController) {
-        guard let markerViewModel = marker.userData as? MarkerViewModel else {
-            return
-        }
-        let stop = markerViewModel.stop
-
-        var regionName = currentRegionName.lowercased()
-        let regionNameComponents = regionName.components(separatedBy: " ")
-        if regionNameComponents.count > 0 {
-            regionName = regionNameComponents[0]
-        }
-
-        TrafiAPIManager.default.retreiveStopDepartures(for: stop, region: regionName) { (success, error) in
-            guard success || error == nil else {
-                // Show an alert to the user if an error occurred
-                let alert = UIAlertController(title: "Error!", message: "Can't connect to the server, please try again later!", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                return
-            }
-
-            markerViewModel.reloadStopInfo()
-            viewController.reloadViewModel()
-        }
-    }
-
     private func refreshMarkers() -> Void {
         var newMarkers = [String : GMSMarker]()
 
@@ -176,9 +152,10 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController : GMSMapViewDelegate {
+extension MainViewController : GMSMapViewDelegate {
 
-    // we need this delegate method to know if the zoom was changed (and we keep the position for loading stops to be the same)
+    /** we used this delegate method to know if the zoom was changed (while we keep the position for stops loading to be the same)
+    */
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
         let leftCoordinates = mapView.projection.visibleRegion().nearLeft;
         let rightCoordinates = mapView.projection.visibleRegion().nearRight;
@@ -190,11 +167,34 @@ extension ViewController : GMSMapViewDelegate {
             loadStops(atLatitude: self.latitude, longitude: self.longitude, radius:self.radius)
         }
     }
+
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        guard let markerViewModel = marker.userData as? MarkerViewModel else {
+            return false
+        }
+        if let currentMarkerTooltipViewController = markerTooltipViewController {
+            currentMarkerTooltipViewController.view.removeFromSuperview()
+            currentMarkerTooltipViewController.removeFromParentViewController()
+        }
+
+        markerTooltipViewController = MarkerTooltipViewController()
+        if let currentMarkerTooltipViewController = markerTooltipViewController {
+            let markerTooltipViewFrame = CGRect(x: 0, y: 0, width: mapView.frame.width, height: mapView.frame.height * 0.3)
+            currentMarkerTooltipViewController.initialize(
+                viewFrame: markerTooltipViewFrame,
+                viewModel: markerViewModel.tooltipViewModel,
+                regionName: currentRegionName
+            )
+            self.addPullUpController(currentMarkerTooltipViewController)
+        }
+
+        return true
+    }
 }
 
-extension ViewController : CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+extension MainViewController : CLLocationManagerDelegate {
 
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else {
             return
         }
@@ -217,30 +217,8 @@ extension ViewController : CLLocationManagerDelegate {
             let currentLocPlacemark = placemarks[0]
             self.currentRegionName = currentLocPlacemark.locality ?? ""
         }
+        
         // Stop updating location
         self.locationManager.stopUpdatingLocation()
-    }
-
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        guard let markerViewModel = marker.userData as? MarkerViewModel else {
-            return false
-        }
-        if let currentMarkerTooltipViewController = markerTooltipViewController {
-            currentMarkerTooltipViewController.view.removeFromSuperview()
-            currentMarkerTooltipViewController.removeFromParentViewController()
-        }
-
-        let markerTooltipViewFrame = CGRect(x: 0, y: 0, width: mapView.frame.width, height: mapView.frame.height * 0.3)
-        let markerTooltipView = MarkerTooltipView(frame: markerTooltipViewFrame)
-        markerTooltipView.viewModel = markerViewModel.tooltipViewModel
-
-        markerTooltipViewController = MarkerTooltipViewController()
-        if let currentMarkerTooltipViewController = markerTooltipViewController {
-            currentMarkerTooltipViewController.markerTooltipView = markerTooltipView
-            self.addPullUpController(currentMarkerTooltipViewController)
-            loadStopSchedules(for: marker, viewController: currentMarkerTooltipViewController)
-        }
-
-        return true
     }
 }

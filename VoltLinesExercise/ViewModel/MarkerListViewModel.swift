@@ -30,7 +30,7 @@ class MarkerListViewModel: NSObject {
     convenience init(stops: [Stop]) {
         var markerViewModels = [MarkerViewModel]()
         for stop in stops {
-            let markerViewModel = MarkerViewModel(withStop: stop)
+            let markerViewModel = MarkerViewModel(stop: stop)
             markerViewModels.append(markerViewModel)
         }
 

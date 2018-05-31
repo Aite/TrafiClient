@@ -19,24 +19,24 @@ class StopScheduleViewModel: NSObject {
         return self.stopSchedule?.remainingMinutes
     }
 
-    init(withStopSchedule stopSchedule: StopSchedule) {
+    init(stopSchedule: StopSchedule) {
         self.stopSchedule  = stopSchedule
         self.name = stopSchedule.name
         self.destination = stopSchedule.destination ?? "destination..."
         super.init()
         if let remainingMinutes = self.remainingMinutes {
-            self.remainingMinutesText = remaininTimeText(for: remainingMinutes)
+            self.remainingMinutesText = remainingTimeText(for: remainingMinutes)
         }
         else {
             self.remainingMinutesText = "remaining time..."
         }
     }
 
-    func reload(withStopSchedule stopSchedule: StopSchedule) -> Bool {
+    func reload(stopSchedule: StopSchedule) -> Bool {
         self.name = stopSchedule.name
         self.destination = stopSchedule.destination ?? ""
         if stopSchedule.departures.count > 0 {
-            self.remainingMinutesText = remaininTimeText(for: stopSchedule.departures[0].remainingMinutes)
+            self.remainingMinutesText = remainingTimeText(for: stopSchedule.departures[0].remainingMinutes)
         }
         else {
             return false
@@ -44,11 +44,19 @@ class StopScheduleViewModel: NSObject {
         return true
     }
 
-    private func remaininTimeText(for remainingMinutes: Int) -> String {
+    private func remainingTimeText(for remainingMinutes: Int) -> String {
         if remainingMinutes > 60 {
             let hours : Int = remainingMinutes / 60
             let minutes : Int = remainingMinutes - (hours * 60)
-            return String(format: "%d h : %d min.", hours, minutes)
+            if minutes > 1 {
+                return String(format: "%d h : %d mins.", hours, minutes)
+            }
+            else {
+                return String(format: "%d h : %d min.", hours, minutes)
+            }
+        }
+        else if remainingMinutes > 1 {
+            return String(format: "%d mins.", remainingMinutes)
         }
         else {
             return String(format: "%d min.", remainingMinutes)

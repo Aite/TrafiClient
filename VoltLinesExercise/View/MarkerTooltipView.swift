@@ -47,6 +47,7 @@ class MarkerTooltipView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         addGripView()
 
         nameLabel = UILabel.init()

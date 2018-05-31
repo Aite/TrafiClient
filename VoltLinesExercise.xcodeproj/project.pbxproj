@@ -10,7 +10,7 @@
 		21BEFF198537FE9E1BBAE72E /* Pods_VoltLinesExercise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C6146F422826929D3AA772 /* Pods_VoltLinesExercise.framework */; };
 		9543E7C28EFBA3E3602FB590 /* Pods_VoltLinesExerciseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1631B5FF507C9043397ABD7 /* Pods_VoltLinesExerciseUITests.framework */; };
 		AF9F37C120B8630A005A07FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9F37C020B8630A005A07FB /* AppDelegate.swift */; };
-		AF9F37C320B8630A005A07FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9F37C220B8630A005A07FB /* ViewController.swift */; };
+		AF9F37C320B8630A005A07FB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9F37C220B8630A005A07FB /* MainViewController.swift */; };
 		AF9F37C620B8630A005A07FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF9F37C420B8630A005A07FB /* Main.storyboard */; };
 		AF9F37C820B8630C005A07FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF9F37C720B8630C005A07FB /* Assets.xcassets */; };
 		AF9F37CB20B8630C005A07FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF9F37C920B8630C005A07FB /* LaunchScreen.storyboard */; };
@@ -60,7 +60,7 @@
 		81409B7BE529A18885AD5A18 /* Pods-VoltLinesExerciseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoltLinesExerciseUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VoltLinesExerciseUITests/Pods-VoltLinesExerciseUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AF9F37BD20B8630A005A07FB /* VoltLinesExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoltLinesExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF9F37C020B8630A005A07FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AF9F37C220B8630A005A07FB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AF9F37C220B8630A005A07FB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AF9F37C520B8630A005A07FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AF9F37C720B8630C005A07FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF9F37CA20B8630C005A07FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -210,8 +210,8 @@
 		AFB9C22F20BAFB9F0084083D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AFB9C23020BAFB9F0084083D /* Coordinate.swift */,
 				AFB9C23120BAFB9F0084083D /* Stop.swift */,
+				AFB9C23020BAFB9F0084083D /* Coordinate.swift */,
 				AFB9C24620BD00180084083D /* StopTooltip.swift */,
 				AFB9C24820BD08870084083D /* StopSchedule.swift */,
 				AFB9C24A20BD091E0084083D /* Departure.swift */,
@@ -233,7 +233,7 @@
 		AFB9C23520BB19BF0084083D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				AF9F37C220B8630A005A07FB /* ViewController.swift */,
+				AF9F37C220B8630A005A07FB /* MainViewController.swift */,
 				AFB9C25220BF82F70084083D /* MarkerTooltipViewController.swift */,
 			);
 			path = Controller;
@@ -487,7 +487,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF9F37C320B8630A005A07FB /* ViewController.swift in Sources */,
+				AF9F37C320B8630A005A07FB /* MainViewController.swift in Sources */,
 				AFB9C25320BF82F70084083D /* MarkerTooltipViewController.swift in Sources */,
 				AFB9C24920BD08870084083D /* StopSchedule.swift in Sources */,
 				AF9F37C120B8630A005A07FB /* AppDelegate.swift in Sources */,

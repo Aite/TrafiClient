@@ -9,30 +9,33 @@
 import UIKit
 
 class MarkerTooltipViewModel: NSObject {
+    var stop : Stop
     var name : String
     var directionText : String
     var distanceText : String
     var schedulesAtStop = [StopScheduleViewModel]()
 
-    init(withStopTooltip tooltip: StopTooltip) {
-        self.name = tooltip.name
-        self.directionText = tooltip.directionText ?? ""
-        self.distanceText = tooltip.distanceText ?? ""
-        for stopSchedule in tooltip.schedules {
-            let stopScheduleViewModel = StopScheduleViewModel(withStopSchedule: stopSchedule)
+    init(stop: Stop) {
+        self.stop = stop
+        let stopTooltip = stop.tooltip
+        self.name = stopTooltip.name
+        self.directionText = stopTooltip.directionText ?? ""
+        self.distanceText = stopTooltip.distanceText ?? ""
+        for stopSchedule in stopTooltip.schedules {
+            let stopScheduleViewModel = StopScheduleViewModel(stopSchedule: stopSchedule)
             self.schedulesAtStop.append(stopScheduleViewModel)
         }
     }
 
-    func reload(withStopTooltip tooltip: StopTooltip) {
-        self.name = tooltip.name
-        self.directionText = tooltip.directionText ?? ""
-        self.distanceText = tooltip.distanceText ?? ""
-        for stopSchedule in tooltip.schedules {
+    func reload(stopTooltip: StopTooltip) {
+        self.name = stopTooltip.name
+        self.directionText = stopTooltip.directionText ?? ""
+        self.distanceText = stopTooltip.distanceText ?? ""
+        for stopSchedule in stopTooltip.schedules {
             var stopScheduleFound = false
             for stopScheduleViewModel in self.schedulesAtStop {
                 if stopScheduleViewModel.name == stopSchedule.name {
-                    if !stopScheduleViewModel.reload(withStopSchedule: stopSchedule) {
+                    if !stopScheduleViewModel.reload(stopSchedule: stopSchedule) {
                         if let indexToRemove = self.schedulesAtStop.index(of: stopScheduleViewModel) {
                             self.schedulesAtStop.remove(at: indexToRemove)
                         }
@@ -43,7 +46,7 @@ class MarkerTooltipViewModel: NSObject {
             }
 
             if !stopScheduleFound {
-                let stopScheduleViewModel = StopScheduleViewModel(withStopSchedule: stopSchedule)
+                let stopScheduleViewModel = StopScheduleViewModel(stopSchedule: stopSchedule)
                 self.schedulesAtStop.append(stopScheduleViewModel)
             }
         }

@@ -36,7 +36,7 @@ class MarkerViewModel: NSObject {
         }
     }
 
-    init(withStop stop: Stop) {
+    init(stop: Stop) {
         self.stop = stop
         super.init()
         self.initializeProperties()
@@ -49,11 +49,6 @@ class MarkerViewModel: NSObject {
             latitude: stop.coordinate.latitiude,
             longitude: stop.coordinate.longitiude
         )
-        self.tooltipViewModel = MarkerTooltipViewModel(withStopTooltip: stop.tooltip)
+        self.tooltipViewModel = MarkerTooltipViewModel(stop: stop)
     }
-
-    func reloadStopInfo() {
-        self.tooltipViewModel.reload(withStopTooltip: stop.tooltip)
-    }
-
 }
