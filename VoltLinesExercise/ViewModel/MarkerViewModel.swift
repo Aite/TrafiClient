@@ -23,6 +23,10 @@ class MarkerViewModel: NSObject {
      */
     private(set) var position : CLLocationCoordinate2D!
 
+    /* Holds the marker Tooltip.
+     */
+    private(set) var tooltipViewModel : MarkerTooltipViewModel!
+
     /* Holds the stop that is represented by marker on the map,
      * when the stop is set the stop properties will initialize the other properties of this class.
      */
@@ -45,6 +49,7 @@ class MarkerViewModel: NSObject {
             latitude: stop.coordinate.latitiude,
             longitude: stop.coordinate.longitiude
         )
+        self.tooltipViewModel = MarkerTooltipViewModel(withStopTooltip: stop.tooltip)
     }
 
 }

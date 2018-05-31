@@ -11,16 +11,14 @@ import UIKit
 class Stop {
     public var id: String
     public var name: String
-    public var direction: String
     public var coordinate: Coordinate
-    public var iconUrl: String
+    public var tooltip : StopTooltip
 
-    init(id: String, name: String?, direction: String?, iconUrl: String?, coordinate: Coordinate) {
+    init(id: String, name: String, coordinate: Coordinate, tooltip: StopTooltip) {
         self.id = id
-        self.name = name ?? "Unknown"
-        self.direction = direction ?? ""
-        self.iconUrl = iconUrl ?? ""
+        self.name = name
         self.coordinate = coordinate
+        self.tooltip = tooltip
     }
 
 
@@ -35,10 +33,16 @@ class Stop {
             return nil
         }
 
-        let name = json["Name"] as? String
-        let direction = json["Direction"] as? String
-        let iconUrl = json["IconUrl"] as? String
+        let name = (json["Name"] as? String) ?? "Unknown"
 
-        self.init(id: id, name: name, direction: direction, iconUrl: iconUrl, coordinate: coordinate)
+        var tooltip : StopTooltip
+        if let tooltipDictionary = json["StopTooltip"] as? [String: Any] {
+            tooltip = StopTooltip(json: tooltipDictionary)
+        }
+        else {
+            tooltip = StopTooltip(name: name)
+        }
+
+        self.init(id: id, name: name, coordinate: coordinate, tooltip: tooltip)
     }
 }

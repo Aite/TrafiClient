@@ -23,6 +23,13 @@
 		AFB9C23E20BB5FB00084083D /* MarkerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9C23C20BB5FB00084083D /* MarkerViewModel.swift */; };
 		AFB9C23F20BB5FB00084083D /* MarkerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9C23D20BB5FB00084083D /* MarkerListViewModel.swift */; };
 		AFB9C24120BB8DD00084083D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9C24020BB8DD00084083D /* Utilities.swift */; };
+		AFB9C24320BCED6F0084083D /* MarkerTooltipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9C24220BCED6F0084083D /* MarkerTooltipViewModel.swift */; };
+		AFB9C24520BCFAB30084083D /* StopScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9C24420BCFAB30084083D /* StopScheduleViewModel.swift */; };
+		AFB9C24720BD00180084083D /* StopTooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9C24620BD00180084083D /* StopTooltip.swift */; };
+		AFB9C24920BD08870084083D /* StopSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9C24820BD08870084083D /* StopSchedule.swift */; };
+		AFB9C24B20BD091E0084083D /* Departure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9C24A20BD091E0084083D /* Departure.swift */; };
+		AFB9C24D20BD18730084083D /* MarkerTooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9C24C20BD18730084083D /* MarkerTooltipView.swift */; };
+		AFB9C24F20BD58FA0084083D /* StopScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9C24E20BD58FA0084083D /* StopScheduleView.swift */; };
 		F98821916435D58E4790E5F5 /* Pods_VoltLinesExerciseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0733A6EE385ED851F1E43A26 /* Pods_VoltLinesExerciseTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +78,13 @@
 		AFB9C23C20BB5FB00084083D /* MarkerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerViewModel.swift; sourceTree = "<group>"; };
 		AFB9C23D20BB5FB00084083D /* MarkerListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerListViewModel.swift; sourceTree = "<group>"; };
 		AFB9C24020BB8DD00084083D /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		AFB9C24220BCED6F0084083D /* MarkerTooltipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerTooltipViewModel.swift; sourceTree = "<group>"; };
+		AFB9C24420BCFAB30084083D /* StopScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopScheduleViewModel.swift; sourceTree = "<group>"; };
+		AFB9C24620BD00180084083D /* StopTooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopTooltip.swift; sourceTree = "<group>"; };
+		AFB9C24820BD08870084083D /* StopSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopSchedule.swift; sourceTree = "<group>"; };
+		AFB9C24A20BD091E0084083D /* Departure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Departure.swift; sourceTree = "<group>"; };
+		AFB9C24C20BD18730084083D /* MarkerTooltipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerTooltipView.swift; sourceTree = "<group>"; };
+		AFB9C24E20BD58FA0084083D /* StopScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopScheduleView.swift; sourceTree = "<group>"; };
 		D1631B5FF507C9043397ABD7 /* Pods_VoltLinesExerciseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VoltLinesExerciseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F26F8FA189673A115E61069B /* Pods-VoltLinesExercise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VoltLinesExercise.release.xcconfig"; path = "Pods/Target Support Files/Pods-VoltLinesExercise/Pods-VoltLinesExercise.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,6 +210,9 @@
 			children = (
 				AFB9C23020BAFB9F0084083D /* Coordinate.swift */,
 				AFB9C23120BAFB9F0084083D /* Stop.swift */,
+				AFB9C24620BD00180084083D /* StopTooltip.swift */,
+				AFB9C24820BD08870084083D /* StopSchedule.swift */,
+				AFB9C24A20BD091E0084083D /* Departure.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -205,6 +222,8 @@
 			children = (
 				AF9F37C420B8630A005A07FB /* Main.storyboard */,
 				AF9F37C920B8630C005A07FB /* LaunchScreen.storyboard */,
+				AFB9C24C20BD18730084083D /* MarkerTooltipView.swift */,
+				AFB9C24E20BD58FA0084083D /* StopScheduleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -220,8 +239,10 @@
 		AFB9C23B20BB5FB00084083D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				AFB9C23C20BB5FB00084083D /* MarkerViewModel.swift */,
 				AFB9C23D20BB5FB00084083D /* MarkerListViewModel.swift */,
+				AFB9C23C20BB5FB00084083D /* MarkerViewModel.swift */,
+				AFB9C24220BCED6F0084083D /* MarkerTooltipViewModel.swift */,
+				AFB9C24420BCFAB30084083D /* StopScheduleViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -462,14 +483,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF9F37C320B8630A005A07FB /* ViewController.swift in Sources */,
+				AFB9C24920BD08870084083D /* StopSchedule.swift in Sources */,
 				AF9F37C120B8630A005A07FB /* AppDelegate.swift in Sources */,
 				AFB9C23E20BB5FB00084083D /* MarkerViewModel.swift in Sources */,
 				AF9F37F520B8C26B005A07FB /* TrafiAPI.swift in Sources */,
 				AFB9C22E20BAFB850084083D /* TrafiAPIManager.swift in Sources */,
+				AFB9C24720BD00180084083D /* StopTooltip.swift in Sources */,
 				AFB9C23220BAFBA00084083D /* Coordinate.swift in Sources */,
+				AFB9C24320BCED6F0084083D /* MarkerTooltipViewModel.swift in Sources */,
 				AFB9C24120BB8DD00084083D /* Utilities.swift in Sources */,
+				AFB9C24D20BD18730084083D /* MarkerTooltipView.swift in Sources */,
+				AFB9C24B20BD091E0084083D /* Departure.swift in Sources */,
 				AFB9C23F20BB5FB00084083D /* MarkerListViewModel.swift in Sources */,
 				AFB9C23320BAFBA00084083D /* Stop.swift in Sources */,
+				AFB9C24F20BD58FA0084083D /* StopScheduleView.swift in Sources */,
+				AFB9C24520BCFAB30084083D /* StopScheduleViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

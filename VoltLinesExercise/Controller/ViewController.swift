@@ -13,6 +13,7 @@ import SnapKit
 class ViewController: UIViewController {
 
     private var locationManager = CLLocationManager()
+    private var geocoder = CLGeocoder()
     private var mapView : GMSMapView!
     private var stopsCountLabel : UILabel!
 
@@ -126,7 +127,7 @@ class ViewController: UIViewController {
 
                 marker?.position = markerViewModel.position
                 marker?.title = markerViewModel.title
-                marker?.userData = markerViewModel.stop
+                marker?.userData = markerViewModel
             }
         }
 
@@ -162,13 +163,12 @@ extension ViewController : GMSMapViewDelegate {
 extension ViewController : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 
-        let location = locations.last
-        guard let latitude = location?.coordinate.latitude, let longitude = location?.coordinate.longitude else {
+        guard let location = locations.last else {
             return
         }
 
-        self.latitude = latitude
-        self.longitude = longitude
+        latitude = location.coordinate.latitude
+        longitude = location.coordinate.longitude
         let currentZoom = mapView.camera.zoom
         let cameraPosition = GMSCameraPosition.camera(withLatitude: latitude, longitude: longitude, zoom: currentZoom)
 
@@ -176,5 +176,17 @@ extension ViewController : CLLocationManagerDelegate {
 
         // Stop updating location
         self.locationManager.stopUpdatingLocation()
+    }
+
+    func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
+        guard let markerViewModel = marker.userData as? MarkerViewModel else {
+            return nil
+        }
+
+        let markerTooltipViewFrame = CGRect(x: 0, y: 0, width: mapView.frame.width * 0.9, height: mapView.frame.height * 0.3)
+        let markerTooltipView = MarkerTooltipView(frame: markerTooltipViewFrame)
+        markerTooltipView.viewModel = markerViewModel.tooltipViewModel
+
+        return markerTooltipView
     }
 }
