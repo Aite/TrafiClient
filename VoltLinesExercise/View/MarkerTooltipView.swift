@@ -21,6 +21,9 @@ class MarkerTooltipView: UIView {
 
     var previewOffset : CGFloat {
         var offset = gripViewHeight + gripViewTopOffset + nameLabel.frame.height + 10
+        if UIDevice().userInterfaceIdiom == .phone && UIScreen.main.nativeBounds.height == 2436 {
+            offset += 20
+        }
         if directionLabel.text != "" {
             offset += directionLabel.frame.height + 10
         }
