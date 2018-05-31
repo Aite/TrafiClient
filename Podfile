@@ -10,6 +10,7 @@ target 'VoltLinesExercise' do
   pod 'GoogleMaps'
   pod 'SnapKit', '~> 4.0.0'
   pod 'Moya', '~> 11.0'
+  pod 'PullUpController'
 
   target 'VoltLinesExerciseTests' do
     inherit! :search_paths

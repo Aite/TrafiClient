@@ -33,6 +33,9 @@ class ViewController: UIViewController {
 //    private var latitude : Double = 41.080037
 //    private var longitude : Double = 29.008330
 
+    private var pullUpControllerAdded = false
+    private var markerTooltipViewController : MarkerTooltipViewController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -178,15 +181,25 @@ extension ViewController : CLLocationManagerDelegate {
         self.locationManager.stopUpdatingLocation()
     }
 
-    func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         guard let markerViewModel = marker.userData as? MarkerViewModel else {
-            return nil
+            return false
+        }
+        if let currentMarkerTooltipViewController = markerTooltipViewController {
+            currentMarkerTooltipViewController.view.removeFromSuperview()
+            currentMarkerTooltipViewController.removeFromParentViewController()
         }
 
-        let markerTooltipViewFrame = CGRect(x: 0, y: 0, width: mapView.frame.width * 0.9, height: mapView.frame.height * 0.3)
+        let markerTooltipViewFrame = CGRect(x: 0, y: 0, width: mapView.frame.width, height: mapView.frame.height * 0.3)
         let markerTooltipView = MarkerTooltipView(frame: markerTooltipViewFrame)
         markerTooltipView.viewModel = markerViewModel.tooltipViewModel
 
-        return markerTooltipView
+        markerTooltipViewController = MarkerTooltipViewController()
+        if let currentMarkerTooltipViewController = markerTooltipViewController {
+            currentMarkerTooltipViewController.markerTooltipView = markerTooltipView
+            self.addPullUpController(currentMarkerTooltipViewController)
+        }
+
+        return true
     }
 }
