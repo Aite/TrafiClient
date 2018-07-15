@@ -1,5 +1,4 @@
-# VoltLinesExercise
-Volt Lines Company - iOS Developer Interview Exercise
+# TrafiClient
 A **Trafi Client** which basically shows information about buses and bus stops (from now on, stations) around the user.
 
 ## Main Objectives:
